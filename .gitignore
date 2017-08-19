@@ -1,0 +1,49 @@
+.DS_Store
+
+target/
+!payconiq-assignment/.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+payconiq-assignment/.apt_generated
+payconiq-assignment/.classpath
+payconiq-assignment/.factorypath
+payconiq-assignment/.project
+payconiq-assignment/.settings
+payconiq-assignment/.springBeans
+
+### IntelliJ IDEA ###
+payconiq-assignment/.idea
+payconiq-assignment/*.iws
+payconiq-assignment/*.iml
+payconiq-assignment/*.ipr
+
+### NetBeans ###
+payconiq-assignment/nbproject/private/
+payconiq-assignment/build/
+payconiq-assignment/nbbuild/
+payconiq-assignment/dist/
+payconiq-assignment/nbdist/
+payconiq-assignment/.nb-gradle/# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+
+
+##########  frontend #######
+# dependencies
+payconiq-assignment-front/node_modules
+
+# testing
+payconiq-assignment-front/coverage
+
+# production
+payconiq-assignment-front/build
+
+# misc
+payconiq-assignment-front/.DS_Store
+payconiq-assignment-front/.env.local
+payconiq-assignment-front/.env.development.local
+payconiq-assignment-front/.env.test.local
+payconiq-assignment-front/.env.production.local
+
+payconiq-assignment-front/npm-debug.log*
+payconiq-assignment-front/yarn-debug.log*
+payconiq-assignment-front/yarn-error.log*
