@@ -20,13 +20,13 @@ public class PayconiqAssignmentApplication {
 		return (args) -> {
 			// save a couple of customers
 			
-			
-			
-			repository.save(new Stock("Apple", 6.11));
-			repository.save(new Stock("Snapple", 9.11));
-			repository.save(new Stock("Rapple", 3.11 ));
-			repository.save(new Stock("Bapple", 4.11 ));
-			repository.save(new Stock("Stappel", 1.14));
+			repository.save(new Stock("King's Landing", 1.14));
+			repository.save(new Stock("Winterfell", 4.94));
+			repository.save(new Stock("High Garden", 2.04));
+			repository.save(new Stock("Dragon Stone", 5.14));
+			repository.save(new Stock("Dorne", 1.74));
+			repository.save(new Stock("Casterly Rock", 1.54));
+			repository.save(new Stock("Iron Islands", 3.12));
 		};
 	}
 }

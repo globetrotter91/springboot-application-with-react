@@ -8407,58 +8407,6 @@ input[type="checkbox"] {
 .close:focus {
   opacity: 1;
 }
-.alert {
-  font-size: 19px;
-  font-weight: 400;
-  position: fixed;
-  top: 0 ;
-  left: 0; 
-  width: 100%;
-  text-align: center ;
-  z-index: 1090;
-}
-.alert .alert-link {
-  font-weight: normal;
-  color: #fff;
-  text-decoration: underline;
-}
-.label {
-  padding-left: 1em;
-  padding-right: 1em;
-  border-radius: 0;
-  font-weight: 300;
-}
-.label-default {
-  background-color: #e7e7e7;
-  color: #333333;
-}
-.badge {
-  font-weight: 300;
-}
-.progress {
-  height: 10px;
-  background-color: #f6f6f6;
-  box-shadow: none;
-}
-.dropdown-menu {
-  padding: 0;
-  margin-top: 0;
-  font-size: 12px;
-}
-.dropdown-menu > li > a {
-  padding: 12px 15px;
-}
-.dropdown-header {
-  padding-left: 15px;
-  padding-right: 15px;
-  font-size: 9px;
-  text-transform: uppercase;
-}
-.popover {
-  color: #fff;
-  font-size: 12px;
-  font-weight: 300;
-}
 
 
 .list-header {

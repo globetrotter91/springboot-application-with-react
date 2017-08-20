@@ -7,19 +7,30 @@ export function addStock(data){
     }
 }
 
-function setStocksInStore(stocks){
+export function setStocksInStore(stocks, sortingKey='id', sortingDirection=1){
+
+    function sortByKey(a, b) {
+        var x = a[sortingKey];
+        var y = b[sortingKey];
+        
+        return (sortingDirection>0)?((x < y) ? -1 : ((x > y) ? 1 : 0)):((x > y) ? -1 : ((x < y) ? 1 : 0));
+    }
+
+    stocks.sort(sortByKey);
+
+
     return {
         type: SET_STOCKS_IN_STORE, 
         payload: stocks
     }
 }
 
-export function listAllStocks(){
+export function listAllStocks(sortingKey='id', sortingDirection=1){
     return dispatch => {
         return axios.get('/api/stocks').then(
             res => {
                 let stocks = res.data; 
-                dispatch(setStocksInStore(stocks)); 
+                dispatch(setStocksInStore(stocks, sortingKey, sortingDirection)); 
             }
         );
     }

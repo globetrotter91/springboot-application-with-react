@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'; 
-import { listAllStocks, deleteStock } from './../../actions/stock.actions';
+import { listAllStocks, deleteStock, setStocksInStore } from './../../actions/stock.actions';
 import Stock from './../presentation/stock';
 import IdStock from './id.stock';
 
@@ -11,7 +11,9 @@ class Stocks extends Component {
         this.state = {
             isLoading: false, 
             idStockDisplay: false, 
-            selectedStock: {}
+            selectedStock: {}, 
+            sortedBy: 'id', 
+            sortDirection: 1
         }
 
         this.deleteStock = this.deleteStock.bind(this);
@@ -33,10 +35,15 @@ class Stocks extends Component {
     updateStock(stock){
         this.setState({selectedStock:stock , idStockDisplay: true});
     }
+    sortArray(sortingKey){
+        let stateSortDirection = this.state.sortDirection;
+        let sortDir = (sortingKey===this.state.sortedBy)?((stateSortDirection>0)?-1:1):1;
+        this.setState({ sortedBy: sortingKey, sortDirection: sortDir });
+        this.props.listAllStocks(sortingKey, sortDir);
+    }
 
     render(){
-        //let stocks = null; 
-        
+       
         const stocks = (this.props.stocks) ? this.props.stocks.map((stock, idx) => {
             return (
                 <Stock stock={stock} key={idx} deleteStock={this.deleteStock} updateStock={this.updateStock}/>
@@ -54,17 +61,31 @@ class Stocks extends Component {
                 </div>
                 <div className='col-md-12 col-xs-12'>
                     <div className='row list-header  hidden-xs'>
-                        <div className='col-md-2 list-header-item'>
+                        <div className='col-md-2 list-header-item' style={{cursor:'pointer' }} onClick={() => {this.sortArray('id')}}>
                             ID 
+                            {this.state.sortedBy==='id' && 
+                                <a style={{cursor:'pointer', textDecoration:'none', marginRight:10}} className='pull-right'> 
+                                    {(this.state.sortDirection>0)?<i className='fa fa-arrow-up'></i>:<i className='fa fa-arrow-down'></i>}</a>}
                         </div>
-                        <div className='col-md-3 list-header-item'>
+                        <div className='col-md-3 list-header-item' style={{cursor:'pointer' }} onClick={() => {this.sortArray('name')}}>
                             Name
+                            {this.state.sortedBy==='name' && 
+                                <a style={{cursor:'pointer', textDecoration:'none', marginRight:10}} className='pull-right'> 
+                                    {(this.state.sortDirection>0)?<i className='fa fa-arrow-up'></i>:<i className='fa fa-arrow-down'></i>}</a>}
                         </div>
-                        <div className='col-md-2 list-header-item'>
+                        <div className='col-md-2 list-header-item'  style={{cursor:'pointer' }} onClick={() => {this.sortArray('currentPrice')}}>
                             Current Price
+                            {this.state.sortedBy==='currentPrice' && 
+                                <a style={{cursor:'pointer', textDecoration:'none', marginRight:10}} className='pull-right'> 
+                                    {(this.state.sortDirection>0)?<i className='fa fa-arrow-up'></i>:<i className='fa fa-arrow-down'></i>}</a>}
+                        
                         </div>
-                        <div className='col-md-3 list-header-item'>
+                        <div className='col-md-3 list-header-item' style={{cursor:'pointer' }} onClick={() => {this.sortArray('lastUpdate')}}>
                             Last Update
+                            {this.state.sortedBy==='lastUpdate' && 
+                                <a style={{cursor:'pointer', textDecoration:'none', marginRight:10}} className='pull-right'> 
+                                    {(this.state.sortDirection>0)?<i className='fa fa-arrow-up'></i>:<i className='fa fa-arrow-down'></i>}</a>}
+                        
                         </div>
                         <div className='col-md-2 list-header-item'>
                             Actions
@@ -76,7 +97,9 @@ class Stocks extends Component {
                     <IdStock 
                         stock={ this.state.selectedStock } 
                         showModal={this.state.idStockDisplay} 
-                        closeModal={ () => { this.setState({idStockDisplay: false}) } } />}
+                        closeModal={ () => { this.setState({idStockDisplay: false}) } } 
+                        sortedBy = {this.state.sortedBy}
+                        sortDirection = {this.state.sortDirection}   />}
             </div>
         )
     }
@@ -93,4 +116,4 @@ function mapStateToProps(state){
         stocks: state.stock.stocks
     }
 }
-export default connect(mapStateToProps, { listAllStocks, deleteStock })(Stocks);
+export default connect(mapStateToProps, { listAllStocks, deleteStock, setStocksInStore })(Stocks);

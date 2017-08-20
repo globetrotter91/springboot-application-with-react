@@ -29,7 +29,7 @@ public class StockService {
 	
 	public void addStock(Stock stock) {
 		stock.setLastUpdate();
-		stockRepo.save(stock);
+		stockRepo.save(stock); 
 	}
 	
 	public void updateStock(int id, Stock stock) {

@@ -11,6 +11,9 @@ class IdStock extends Component {
         this.onChange = this.onChange.bind(this); 
         this.onSubmit = this.onSubmit.bind(this);
     }
+    componentDidMount(){
+        this.setState({error: false})
+    }
 
     onChange(e){
         this.setState({
@@ -20,16 +23,17 @@ class IdStock extends Component {
 
     onSubmit(e){
         e.preventDefault();
+        this.setState({error: false})
         if(this.state.id){
             this.props.updateStock(this.state.id, this.state).then(
-                res => { this.props.closeModal(); this.props.listAllStocks() }, 
-                err => {}
+                res => { this.props.closeModal(); this.props.listAllStocks(this.props.sortedBy, this.props.sortDirection) }, 
+                err => { this.setState({error: true}) }
             );
         }
         else{
             this.props.addStock(this.state).then(
-                res => { this.props.closeModal(); this.props.listAllStocks() }, 
-                err => {}
+                res => { this.props.closeModal(); this.props.listAllStocks(this.props.sortedBy, this.props.sortDirection) }, 
+                err => { this.setState({error: true}) }
             ); 
         }
     }
@@ -43,6 +47,11 @@ class IdStock extends Component {
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={this.onSubmit}>
+                        {this.state.error &&
+                        <div className="alert alert-dismissible alert-danger">
+                            Some Error Occured. Please make sure name is text and price is a number.
+                        </div>                        
+                        }
                         <div className='form-group'>
                             <label>Name</label>
                             <input type='text' className='form-control' name="name" value={this.state.name} onChange={this.onChange} />

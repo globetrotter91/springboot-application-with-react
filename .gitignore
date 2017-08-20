@@ -1,6 +1,4 @@
-.DS_Store
-
-target/
+payconiq-assignment/target/
 !payconiq-assignment/.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -23,11 +21,8 @@ payconiq-assignment/build/
 payconiq-assignment/nbbuild/
 payconiq-assignment/dist/
 payconiq-assignment/nbdist/
-payconiq-assignment/.nb-gradle/# See https://help.github.com/ignore-files/ for more about ignoring files.
+payconiq-assignment/.nb-gradle/
 
-
-
-##########  frontend #######
 # dependencies
 payconiq-assignment-front/node_modules
 
@@ -47,3 +42,6 @@ payconiq-assignment-front/.env.production.local
 payconiq-assignment-front/npm-debug.log*
 payconiq-assignment-front/yarn-debug.log*
 payconiq-assignment-front/yarn-error.log*
+
+
+.DS_Store
