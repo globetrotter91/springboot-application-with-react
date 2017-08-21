@@ -54,11 +54,11 @@ class IdStock extends Component {
                         }
                         <div className='form-group'>
                             <label>Name</label>
-                            <input type='text' className='form-control' name="name" value={this.state.name} onChange={this.onChange} />
+                            <input required type='text' className='form-control' name="name" value={this.state.name} onChange={this.onChange} />
                         </div>
                         <div className='form-group'>
                             <label>Current Price</label>
-                            <input type='text' className='form-control' name="currentPrice" value={this.state.currentPrice} onChange={this.onChange} />
+                            <input required type='text' className='form-control' name="currentPrice" value={this.state.currentPrice} onChange={this.onChange} />
                         </div>
                         <div className='form-group'>
                             <button className='btn btn-primary' type='submit'>Save</button>

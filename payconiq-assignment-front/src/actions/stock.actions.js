@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { SET_STOCKS_IN_STORE } from './../constants';
+import { SET_STOCKS_IN_STORE, BASE_API_PATH } from './../constants';
 
 export function addStock(data){
     return dispatch => {
-        return axios.post('/api/stocks', data);
+        return axios.post(BASE_API_PATH+'/api/stocks', data);
     }
 }
 
@@ -27,7 +27,7 @@ export function setStocksInStore(stocks, sortingKey='id', sortingDirection=1){
 
 export function listAllStocks(sortingKey='id', sortingDirection=1){
     return dispatch => {
-        return axios.get('/api/stocks').then(
+        return axios.get(BASE_API_PATH+'/api/stocks').then(
             res => {
                 let stocks = res.data; 
                 dispatch(setStocksInStore(stocks, sortingKey, sortingDirection)); 
@@ -38,19 +38,19 @@ export function listAllStocks(sortingKey='id', sortingDirection=1){
 
 export function listOneStock(id){
     return dispatch => {
-        return axios.get('/api/stocks/'+id);
+        return axios.get(BASE_API_PATH+'/api/stocks/'+id);
     }
 }
 
 export function updateStock(id, data){
     return dispatch => {
-        return axios.put('/api/stocks/'+id, data);
+        return axios.put(BASE_API_PATH+'/api/stocks/'+id, data);
     }
 }
 
 export function deleteStock(id){
     return dispatch => {
-        return axios.delete('/api/stocks/'+id);
+        return axios.delete(BASE_API_PATH+'/api/stocks/'+id);
     }
 }
 

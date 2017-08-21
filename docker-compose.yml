@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  payconiq-application:
+    build: .
+    ports:
+      - 8080:8080

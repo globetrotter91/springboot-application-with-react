@@ -1,0 +1,6 @@
+FROM maven:3-jdk-8-alpine
+COPY ./payconiq-assignment /usr/src/payconiq-assignment
+WORKDIR /usr/src/payconiq-assignment
+RUN mvn clean install
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/usr/src/payconiq-assignment/target/payconiq-assignment.jar"]
