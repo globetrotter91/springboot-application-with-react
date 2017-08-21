@@ -24,6 +24,6 @@ http://localhost:8080/health
 
 
 # Details
-When the app is run, it created 7 stocks [test stocks]. 
-The frontend is made using ReactJS and is fully responsive. 
-The frontend shows list of stocks. You can add/update/delete a stock. You can also sort the list by clicking the header.
+* When the app is run, it created 7 stocks [test stocks]. 
+* The frontend is made using ReactJS and is fully responsive. 
+* The frontend shows list of stocks. You can add/update/delete a stock. You can also sort the list by clicking the header.
